@@ -1,0 +1,9 @@
+{
+  "host": "localhost",
+  "user": "root",
+  "port": "3306",
+  "password": "roots",
+  "database": "sale",
+  "charset": "utf8",
+  "dialect": "mysql"
+}

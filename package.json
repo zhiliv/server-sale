@@ -1,0 +1,22 @@
+{
+  "name": "server-sale",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/zhiliv/server-sale",
+  "author": "Ivan Zhilnikov <i.zhilnikov@bars.group>",
+  "license": "MIT",
+  "dependencies": {
+    "@koa/cors": "^3.1.0",
+    "cli-color": "^2.0.0",
+    "koa": "^2.13.0",
+    "koa-body": "^4.2.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^9.0.1",
+    "moment": "^2.27.0",
+    "mysql2": "^2.1.0",
+    "sequelize": "^6.2.0"
+  },
+  "scripts": {
+    "start": "nodemon --inspect index.js"
+  }
+}
