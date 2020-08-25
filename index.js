@@ -1,3 +1,6 @@
+//ctx.request.body // your POST params
+//ctx.params // URL params, like :id
+
 /**
  ** @module index.js
  */
@@ -31,39 +34,51 @@ app.use(cors());
 //установка cors для сервера
 app.use(bodyParser({ strict: false }));
 //устанока парсера параметров для сервера
-app.use(koaBody());
+
+//app.use(koaBody());
 //устанока парсера параметров для сервера POST
 app.use(router.routes()).use(router.allowedMethods());
 //установка роутера для сервера
 
 app.use(function(ctx) {
-  console.log(ctx)
   ctx.body = { status: 'OK' };
 });
 
 /**
- ** Получение данных авторизации 
+ ** Получение данных авторизации
  * @method post
  * @param {String} username Имя пользваотеля
  * @param {String} pass Пароль пользователя
   */
-router.post('/auth', async (ctx, next) => {
-  console.log('Авторизация')
-	//параметры запроса
- 	const arg = ctx.params;
-	console.log('arg', arg);
-	/* let USER;
-	await Users.findOne({
+router.post('/auth', async ctx => {
+  const arg = ctx.request.body;
+   //параметры запроса
+ 	let USER; //переменная для храения днных пользователя
+	await table.Users.findOne({
 		where: {
 			username: arg.username,
 			password: arg.password,
 		},
 		raw: true,
 	}).then((res) => {
+    console.log('res', res)
 		USER = res;
-	}); */
+	})
 	ctx.body = {USER : 'test'} ;
 });
+
+/*
+ * Регистрация новго пользователя
+ * @method post
+ * @param {String} arg Параметры
+ * @param {String} arg.fio Фамилия Имя Отчество
+ * @param {String} arg.email Электронная почта
+ * @param {String} arg.dr Дата рождения
+  */
+router.post('/newuser', async ctx => {
+ //TODO
+})
+
 
 /*
  * Получение всех клментов
@@ -77,7 +92,9 @@ let keyDate = {
 	day: date.getDay(),
 };
 
-router.get('/', async (ctx, next) => {
+router.get('/:name', async (ctx, next) => {
+  const arg = ctx.params;
+	console.log('arg', arg.name);
 	ctx.body = { data: 'error' };
 });
 
