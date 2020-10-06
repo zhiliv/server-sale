@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "..\\overseas_gifts"
+		},
+		{
+			"path": "."
+		}
+	],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "overseas_gifts"
+  }
+}

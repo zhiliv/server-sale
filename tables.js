@@ -41,24 +41,11 @@ const Users = (module.exports.Users = sequelize.define(
 			//комментарий поля
 			comment: 'Идентификатор пользователя',
 		},
-		username: {
-			//тип данных
-			type: Sequelize.STRING(100),
-			//может содердать null
-			allowNull: false,
-			//комментарий
-			comment: 'Имя пользователя',
-		},
 		password: {
 			type: Sequelize.TEXT,
 			allowNull: false,
 			comment: 'Пароль пользователя',
-		},
-		barcode: {
-			type: Sequelize.STRING(20),
-			allowNull: false,
-			comment: 'Код для полуенич скидки',
-		},
+		}
 	},
 
 	{ comment: 'Пользователи' },
