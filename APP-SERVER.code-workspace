@@ -8,6 +8,21 @@
 		}
 	],
   "settings": {
-    "liveServer.settings.multiRootWorkspaceName": "overseas_gifts"
+    "liveServer.settings.multiRootWorkspaceName": "overseas_gifts",
+    "NativescriptExtend.fileAssociations": [
+      {
+        "systemId": "g:\\projects\\overseas_gifts\\schema\\tns.xsd",
+        "pattern": "**/**/*.xml"
+      },
+      {
+        "systemId": "http://www.w3.org/2001/XMLSchema.xsd",
+        "pattern": "g:\\projects\\overseas_gifts\\schema\\tns.xsd"
+      }
+    ],
+    "files.exclude": {
+      "schema": true
+    },
+    "NativescriptExtend.format.enabled": true,
+    "NativescriptExtend.validation.enabled": true
   }
 }

@@ -68,15 +68,19 @@ app.use(bodyParser({ strict: false }));
 //устанока парсера параметров для сервера POST
 const router = new Router();
 app.use(router.routes()).use(router.allowedMethods());
+
+
 //установка роутера для сервера
-/*
+
 app.use(function (ctx) {
 	ctx.body = { status: 'OK' };
 });
- */
 
 
-
+router.get('/', async (ctx) => {
+  console.log('123123')
+  ctx.body = 'Тест'
+})
 
 /**
  ** Получение данных авторизации
@@ -87,6 +91,7 @@ app.use(function (ctx) {
 router.post('/auth', async (ctx) => {
 	const arg = ctx.request.body;
   console.log('arg', arg)
+  ctx.body = 'Успех'
 	//параметры запроса
   let USER; //переменная для храения днных пользователя
   let datauser = await table.dataUser.findOne({where: {email: arg.email}});
@@ -160,12 +165,15 @@ router.post('/findUser', async (ctx) => {
  */
 router.post('/newuser', async (ctx) => {
 	const arg = ctx.request.body; //получение переданных параметров
+  console.log('arg', arg)
 	let lastCard = await table.dataUser.max('numCard'); //получение последнего номера карты
   arg.numCard = Number(lastCard) + 1; //установка значения для новой карты
   arg.SummaBonusa = 0;
   arg.password =await  crypt(arg.password)
+
   let user = await table.Users.create(arg)
   arg.userId = user.dataValues.id
+
   let dataUser = await table.dataUser.create(arg)
   ctx.body = dataUser.dataValues
 });
